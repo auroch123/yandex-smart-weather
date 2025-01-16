@@ -1,0 +1,65 @@
+void MainMenu1(){
+  //tempButton1.initButton(0,0,75,75,"", ILI9341_BLUE);
+  
+  playButton2.initButton(0,80,75,75, "play", ILI9341_DARKGREEN);
+  settingsButton3.initButton(0,160,75,75,"setngs", ILI9341_DARKGREEN);
+  if(relay1Pressed & relay1WasPressed){
+    relayButton4.initButton(80,160,75,75,"rel1", ILI9341_GREEN);}
+  else{
+    relayButton4.initButton(80,160,75,75,"rel1", ILI9341_RED);}
+  if(relay2Pressed & relay2WasPressed){
+    relayButton5.initButton(165,160,75,75,"rel2", ILI9341_GREEN);}
+  else{
+    relayButton5.initButton(165,160,75,75,"rel2", ILI9341_RED);}
+  if(relay3Pressed & relay3WasPressed){
+    relayButton6.initButton(250,160,75,75,"rel3", ILI9341_GREEN);}
+  else{
+    relayButton6.initButton(250,160,75,75,"rel3", ILI9341_RED);}
+  
+
+}
+void Menu1(){
+  
+  settingsButton3.initButton(0x0000,0x00A0,0x004B,0x004B,"Настр", ILI9341_LIGHTGREY);
+  if(relay1Pressed & relay1WasPressed){
+    relayButton4.initButton(0x0050,0x00A0,0x004B,0x004B,"реле1", ILI9341_GREEN);}
+  else{
+    relayButton4.initButton(0x0050,0x00A0,0x004B,0x004B,"реле1", ILI9341_RED);}
+  if(relay2Pressed & relay2WasPressed){
+    relayButton5.initButton(0x00A5,0x00A0,0x004B,0x004B,"реле2", ILI9341_GREEN);}
+  else{
+    relayButton5.initButton(0x00A5,0x00A0,0x004B,0x004B,"реле2", ILI9341_RED);}
+  if(relay3Pressed & relay3WasPressed){
+    relayButton6.initButton(0x00FA,0x00A0,0x004B,0x004B,"реле3", ILI9341_GREEN);}
+  else{
+    relayButton6.initButton(0x00FA,0x00A0,0x004B,0x004B,"реле3", ILI9341_RED);}
+    tft.width();
+}
+
+
+loop(){
+    if (ts.tirqTouched() && (sp.x == NULL && sp.y == NULL)) {
+    p = ts.getPoint();
+    sp = sp.getScreenCoords(p.x, p.y, tft);
+
+  }  
+  if ((!ts.tirqTouched()) && (sp.x != NULL && sp.y != NULL)){
+     
+      
+    if(relayButton4.isClicked(sp)){
+      
+      if(relay1WasPressed){
+        relayButton4.initButton(0x0050,0x00A0,0x004B,0x004B,"реле1", ILI9341_RED);
+        relay1WasPressed = false;
+        sp.x = NULL;
+        sp.y = NULL;
+      }
+      else{
+        relayButton4.initButton(0x0050,0x00A0,0x004B,0x004B,"реле1", ILI9341_GREEN);
+        relay1WasPressed = true;
+        sp.x = NULL;
+        sp.y = NULL;
+      }
+    }
+    
+}
