@@ -1,19 +1,16 @@
 #include <Arduino.h>
-#include <Adafruit_ILI9341.h>
-#include <ScreenPoint.h>
-class Button {
 
- public:  
-  u_int8_t x;
-  u_int8_t y;
-  u_int8_t width;
-  u_int8_t height;
-  u_int8_t color = 565;
-  char *text;
- 
-  Button(){}
-  void initButton(u_int16_t xPos, u_int16_t yPos, u_int16_t butWidth, u_int16_t butHeight, char *butText, u_int16_t bColor, Adafruit_ILI9341 tft);
-  void render(Adafruit_ILI9341 tft);
-  bool isClicked(ScreenPoint sp);
-  
+#include <Adafruit_GFX.h>
+#ifndef BUTTON_H
+#define BUTTON_H
+class Button : public Adafruit_GFX_Button {
+public:
+    Button() : Adafruit_GFX_Button() { 
+    }
+    // void initButton(Adafruit_GFX *gfx, int16_t x, int16_t y,
+    //                                  uint16_t w, uint16_t h, uint16_t outline,
+    //                                  uint16_t fill, uint16_t textcolor,
+    //                                  char *label, uint8_t textsize);
+    
 };
+#endif
