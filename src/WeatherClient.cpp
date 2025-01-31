@@ -78,11 +78,11 @@ void WeatherClient::fetchWeatherData() {
       
         // https://yandex.ru/dev/weather/doc/ru/concepts/auth
         // String jsonRequest = PSTR(R"({
-        // "query": "{\n  weatherByPoint(request: { lat: 52.37125, lon: 4.89388 })  {    now {      temperature    }  }}" })");
+        // "query": "{\n  weatherByPoint(request: { lat: широта, lon: долгота })  {    now {      temperature    }  }}" })");
         
         
         String jsonRequest = PSTR(R"({
-        "query": "{  weatherByPoint(request: { lat: 49.376475, lon: 44.015482 }){
+        "query": "{  weatherByPoint(request: { lat: широта, lon: долгота }){
            now {
       temperature(unit:CELSIUS)
       feelsLike(unit:CELSIUS)
